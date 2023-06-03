@@ -692,7 +692,7 @@ local function processTelemetry(appId, value, now)
     telemetry.batt1volt = bit32.extract(value,0,9) -- dV
     -- telemetry max is 51.1V, 51.2 is reported as 0.0, 52.3 is 0.1...60 is 88
     -- if >= 12S and V > 51.1 ==> Vreal = 51.2 + telemetry.batt1volt
-    if conf.cell1Count >= 12 and telemetry.batt1volt < conf.cell1Count*20 then
+    if conf.cell1Count >= 14 and telemetry.batt1volt < conf.cell1Count*20 then
       -- assume a 2V as minimum acceptable "real" voltage
       telemetry.batt1volt = 512 + telemetry.batt1volt
     end
